@@ -17,51 +17,34 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
-			$messages = [''];
+			$messages = [
+				"type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "message",
+        "label": "Action 1",
+        "text": "Action 1"
+      },
+      {
+        "type": "message",
+        "label": "Action 2",
+        "text": "Action 2"
+      }
+    ],
+    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
+    "title": "Title",
+    "text": "Text"
+  }
+			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				"type": "template",
-  "altText": "this is a confirm template",
-  "template": {
-    "type": "confirm",
-    "actions": [
-      {
-        "type": "message",
-        "label": "Yes",
-        "text": "Yes"
-      },
-      {
-        "type": "message",
-        "label": "No",
-        "text": "No"
-      }
-    ],
-    "text": "Continue?"
-  }
-			];
-			
-/*			
-//$servername = "61.19.71.179";
-//$username = "sso";
-//$password = "075271283";
-//$dbname = "line";
-// Create connection
-//$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-//if ($conn->connect_error) {
- //   die("Connection failed: " . $conn->connect_error);
-//} 
-//$sql = "INSERT INTO profile (UID, name)
-//VALUES ('".$text."', 'Doe')";
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$conn->close();
-		*/	
+				'messages' => [$messages],
+			];			
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 			$ch = curl_init($url);
