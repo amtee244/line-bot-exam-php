@@ -17,7 +17,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
-			$messages = [
+			$messages = ['
   "type": "bubble",
   "header": {
     "type": "box",
@@ -56,7 +56,7 @@ if (!is_null($events['events'])) {
   "styles": {
     "comment": "See the example of a bubble style object"
   }
-];
+'];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
