@@ -17,28 +17,46 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
-			$messages = [
-				"type": "template",
-  "altText": "this is a buttons template",
-  "template": {
-    "type": "buttons",
-    "actions": [
+			$messages = [{
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
       {
-        "type": "message",
-        "label": "Action 1",
-        "text": "Action 1"
-      },
-      {
-        "type": "message",
-        "label": "Action 2",
-        "text": "Action 2"
+        "type": "text",
+        "text": "Header text"
       }
-    ],
-    "thumbnailImageUrl": "SPECIFY_YOUR_IMAGE_URL",
-    "title": "Title",
-    "text": "Text"
+    ]
+  },
+  "hero": {
+    "type": "image",
+    "url": "https://example.com/flex/images/image.jpg"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Body text"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Footer text"
+      }
+    ]
+  },
+  "styles": {
+    "comment": "See the example of a bubble style object"
   }
-			];
+}];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
