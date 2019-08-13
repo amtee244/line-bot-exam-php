@@ -17,12 +17,12 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
-			$messages = [
-				'id': '325708',
-    				'type': 'sticker',
-   				'packageId': '1',
-    				'stickerId': '1'
-			];
+			$messages = '
+				"id": "325708",
+   				"type": "sticker",
+    				"packageId": "1",
+    				"stickerId": "1"
+			';
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
