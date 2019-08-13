@@ -17,25 +17,11 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			// Build message to reply back
-			$messages = ['"type": "flex",
-  "altText": "this is a flex message",
-  "contents": {
-    "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "text",
-          "text": "hello"
-        },
-        {
-          "type": "text",
-          "text": "world"
-        }
-      ]
-    }
-  }'];
+			$messages = [
+				"type": "sticker",
+  				"packageId": "1",
+  				"stickerId": "1"
+			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
